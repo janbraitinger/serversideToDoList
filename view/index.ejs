@@ -1,0 +1,63 @@
+<html>
+
+<head>
+    <title>ToDo-List</title>
+    <script src="handler.js" defer> </script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            pointer-events: <%= css %>;
+        }
+    </style>
+</head>
+<script>
+    var entrySessionData = '<%= welcomeEntry %>';
+    setTimeout(() => {
+        let array = entrySessionData.split(",")
+        if (array != "") {
+            for (let data of array) {
+                addServerData(data);
+            }
+        }
+
+    }, 0);
+</script>
+
+<body>
+    <header>
+        <h1><%= title %></h1>
+    </header>
+
+    <main>
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" id="entry" placeholder="new item ...">
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" onclick="init()" type="button">add item</button>
+            </div>
+        </div>
+
+        <ul id="entrys">
+            <!--<li>Hi, welcome to your own web based toDo List</li>-->
+           
+        </ul>
+        <span id="loading"></span>
+
+
+    </main>
+    <footer>
+
+
+        <textarea rows="1" cols="35" readonly><%= session %></textarea>
+        <br/>
+        <form action="/endList" method="post">
+            <input type="submit" class="btn btnN" value="DELETE LIST" />
+        </form>
+    </footer>
+
+</body>
+
+
+</html>
