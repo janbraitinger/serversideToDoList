@@ -7,3 +7,6 @@ Other people can read your list by sending them your id (at the bottom of the pa
 1. Pull the repository
 2. ```npm install``` for getting all npm-moduls (dependencies)
 3. ```node app.js``` or just ```nodemon``` to run
+
+### Live demo
+[Here](http://aws.braitinger.org) can you try it out.
