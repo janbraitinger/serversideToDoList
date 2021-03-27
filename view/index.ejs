@@ -1,0 +1,66 @@
+<html>
+
+<head>
+    <title>ToDo-List</title>
+    <script src="handler.js" async> </script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+<link rel="icon" type="image/png" href="https://static.thenounproject.com/png/850545-200.png"/>    
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            pointer-events: <%= css %>;
+        }
+    </style>
+</head>
+<script>
+    var entrySessionData = '<%= welcomeEntry %>';
+    setTimeout(() => {
+        let array = entrySessionData.split(",")
+        if (array != "") {
+            for (let data of array) {
+                addServerData(data);
+            }
+        }
+
+    }, 250);
+</script>
+
+<body>
+    <header>
+        <h1><%= title %></h1>
+    </header>
+
+    <main>
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" id="entry" placeholder="new item ...">
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" onclick="init()" type="button">add item</button>
+            </div>
+        </div>
+<span id="errormsg" style="color:red;"></span><br/>
+
+        <ul id="entrys">
+            <!--<li>Hi, welcome to your own web based toDo List</li>-->
+           
+        </ul>
+       <h6> <span id="loading"></span></h6>
+<!--
+<h6>*maybe there are some refresh problems at the moment. Just in case: Multiple refreshing can solve some problems!</h6>
+-->   
+ </main>
+    <footer>
+
+
+        <textarea rows="1" cols="35" readonly><%= session %></textarea>
+        <br/>
+        <form action="/endList" method="post">
+            <input type="submit" class="btn btnN" value="DELETE LIST" />
+        </form>
+    </footer>
+
+</body>
+
+
+</html>
